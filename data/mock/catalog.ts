@@ -157,7 +157,7 @@ const SEEDS: MockProductSeed[] = [
     referencePrice: 33000,
     isFeatured: true,
     priority: 10,
-    image: '/images/mock/product-bag-a.svg',
+    image: '/images/mock/product-bag-a.webp',
   },
   {
     slug: 'maison-lueur-compact-wallet',
@@ -170,7 +170,7 @@ const SEEDS: MockProductSeed[] = [
     currentPrice: 13200,
     referencePrice: 17600,
     priority: 8,
-    image: '/images/mock/product-wallet-a.svg',
+    image: '/images/mock/product-wallet-a.webp',
   },
   {
     slug: 'atelier-nove-shoulder-mini',
@@ -212,7 +212,7 @@ const SEEDS: MockProductSeed[] = [
     referencePrice: 6600,
     isFeatured: true,
     priority: 9,
-    image: '/images/mock/product-beauty-a.svg',
+    image: '/images/mock/product-beauty-a.webp',
   },
   {
     slug: 'neri-beauty-cleansing-balm',
@@ -269,7 +269,7 @@ const SEEDS: MockProductSeed[] = [
     referencePrice: 16800,
     isFeatured: true,
     priority: 9,
-    image: '/images/mock/product-home-a.svg',
+    image: '/images/mock/product-home-a.webp',
   },
   {
     slug: 'calma-objects-stoneware-plate-set',
@@ -323,7 +323,7 @@ const SEEDS: MockProductSeed[] = [
     referencePrice: 21800,
     isFeatured: true,
     priority: 10,
-    image: '/images/mock/product-tech-a.svg',
+    image: '/images/mock/product-tech-a.webp',
   },
   {
     slug: 'studio-aube-straight-iron',

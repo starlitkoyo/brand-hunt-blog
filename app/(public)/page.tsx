@@ -34,8 +34,8 @@ export default async function HomePage() {
   return (
     <>
       <HeroEditorial
-        imageUrl="/images/mock/hero.svg"
-        imageAlt="バッグと日用品を並べた編集イメージ"
+        imageUrl="/images/mock/hero.webp"
+        imageAlt="やわらかい光の中に置かれたグレージュのレザートートバッグ"
       />
 
       {/* TODAY'S EDIT */}
