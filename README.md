@@ -1,92 +1,182 @@
-# ルナのブランド巡回ノート
+# THE BRAND EDIT ｜ ブランド編集ノート
 
-Amazonでブランド品を買うときの見方をまとめたブログ。
-Markdown で記事を書き、静的HTMLを生成して公開します。
+Amazonのブランド商品を、編集メディアの見せ方で紹介するWebサイトです。
 
-Xアカウント「🌙 ルナ｜ブランドハンター」と同じ人格で運営します。
-自動投稿システム本体は別リポジトリ（`amazon-deal-x-bot`）です。
+> いいものを、いい価格で。
 
-## このブログの役割
+## 現在の状態
 
-Amazonアソシエイトの審査には **申込から180日以内に3件の適格販売** が必要です。
-フォロワー数ではなく「買う気で検索してきた人」を連れてくるのがこのブログの仕事です。
+**Phase 1（静的UI＋モックデータ）まで完了**しています。
+Supabase、Amazon Creators API、定期更新、管理画面は未実装です。
 
-## 使い方
+| Phase | 内容                          | 状態             |
+| ----- | ----------------------------- | ---------------- |
+| 1     | 静的UI・モックデータ          | ✅ 完了          |
+| 2     | Supabase接続                  | 未着手           |
+| 3     | Amazon Creators APIアダプター | 未着手           |
+| 4     | Vercel Cronによる定期更新     | 未着手           |
+| 5     | 管理画面                      | 未着手           |
+| 6     | QA                            | 一部（下記参照） |
 
-### 準備（初回だけ）
+## 技術構成
 
-```bash
-python -m venv .venv
-.venv\Scripts\activate        # macOS/Linux は source .venv/bin/activate
-pip install -r requirements.txt
-```
+- Next.js 16（App Router）
+- React 19
+- TypeScript 5.9（strict / noUncheckedIndexedAccess）
+- Tailwind CSS 4（CSS-first。デザイントークンは `app/globals.css` の CSS Custom Properties）
+- Vitest 4
+- ESLint 9 + eslint-config-next / Prettier
 
-### 記事を書く
+UIライブラリ、アニメーションライブラリは追加していません。
 
-`content/articles/` に `.md` ファイルを追加します。ファイル名の数字は並び順用です。
-
-```markdown
----
-slug: "url-になる文字列"
-title: "記事タイトル"
-description: "検索結果に出る説明文。120文字くらい"
-published: "2026-08-07"
-tags: ["タグ1", "タグ2"]
----
-
-本文をMarkdownで書きます。
-```
-
-### ビルド
+## ローカル起動
 
 ```bash
-python build.py
+npm install
+npm run dev
 ```
 
-`dist/` に静的HTMLが出ます。**禁止表現が含まれているとビルドが失敗します**
-（`content/site.yaml` の `banned_expressions`）。
+http://localhost:3000 が開きます。**環境変数が無くてもモックデータで動作します。**
 
-### ローカルで確認
+## コマンド
 
 ```bash
-python -m http.server 8899 --directory dist
+npm run dev                 # 開発サーバー
+npm run build               # 本番ビルド
+npm run start               # 本番サーバー
+npm run lint                # ESLint
+npm run typecheck           # tsc --noEmit
+npm run test                # Vitest
+npm run format              # Prettier
+npm run check:placeholders  # 公開前チェック（未置換の {{要確認: ...}} を検出）
 ```
 
-http://127.0.0.1:8899/ を開きます。
+記事の再生成:
 
-## 公開手順（Vercel）
+```bash
+node scripts/build-articles.mjs
+```
 
-1. ドメインを取得する
-2. `content/site.yaml` の `base_url` を実際のドメインに差し替える
-3. `python build.py` で再生成
-4. GitHubにpush
-5. Vercelでリポジトリを取り込む（`vercel.json` があるのでビルド設定は不要）
-6. Vercelの Domains でドメインを接続
+`content/articles/*.md` を読み、`data/mock/articles.generated.ts` を書き出します。
+Markdownをそのまま HTML 化せず、許可したブロック種別だけに変換します（任意HTMLを描画しないため）。
 
-`dist/` もコミットします。ホスティング側でビルドを走らせない構成です。
+## 環境変数
 
-## 書くときのルール
+`.env.example` をコピーして `.env.local` を作ります。
 
-- **誇張・断定をしない。** 「絶対」「正規品」「最安値保証」などは使わない（ビルドで検査）
-- 割引率を書くときは **必ず比較の相手を明記する**（例「過去90日の中央値と比べて」）
-- 真贋の鑑定や判定はしない
-- 価格・在庫は変動するので「掲載時点の情報」と添える
-- アフィリエイトリンクを入れる記事には、Amazonアソシエイトの表記を出す（フッターに常時表示）
+```bash
+cp .env.example .env.local
+```
 
-## 記事のストック
+**秘密値を `NEXT_PUBLIC_` に入れないでください。** ブラウザへ露出します。
+`SUPABASE_SERVICE_ROLE_KEY` とAmazonの秘密値はサーバー専用です。
 
-- [x] 01 Amazonでブランドバッグを買うとき、最初に見るのは「販売元」の欄
-- [x] 02 Amazonの「参考価格」と割引率の読み方
-- [x] 03 通勤用A4トートの選び方
-- [x] 04 Amazon販売とマーケットプレイス出品の違い
-- [x] 05 二つ折りと長財布、カード枚数で選ぶ
-- [x] 06 腕時計のケース径の測り方と目安
-- [x] 07 Amazonの大型セール時期と、セール外で下がるパターン
-- [x] 08 ブランド小物のギフト選び（予算別）
-- [x] 09 ほしい物リストで値段の変化を追う
-- [x] 10 ブランド品を買う前に返品条件を見ておく理由
+`NEXT_PUBLIC_SITE_URL` が未設定の場合、canonical と OG URL を出力しません
+（架空のURLを出さないための仕様です）。本番公開前に設定してください。
 
-## 関連
+## モックモード
 
-- 自動投稿システム：`C:\Users\saltl\amazon-deal-x-bot`
-- アカウント設計・投稿原稿：`Momo_vault\09_Amazon値下げX\`
+`NEXT_PUBLIC_SUPABASE_URL` と `NEXT_PUBLIC_SUPABASE_ANON_KEY` が未設定のとき、
+自動的にモックデータで動作します。
+
+- ブランドはすべて架空（Atelier Nove / Maison Lueur / Calma Objects / Neri Beauty / Studio Aube）
+- 商品16件、価格はサンプル値。すべて `isMock: true`
+- **実在ブランドの価格・割引率は一切生成していません**
+- 画面上部に「SAMPLE DATA」の帯を常時表示します
+
+商品画像は `public/images/mock/` の抽象シルエットSVGです。
+第三者のロゴ・商品写真は含めていません。
+
+## 価格の扱い
+
+事実でない数値を出さないための仕様です。
+
+- 現在価格が取得できなければ「Amazonで現在の価格をご確認ください」と表示
+- 参考価格が無ければ取り消し線を出さない
+- 割引率は、現在価格と比較可能な参考価格の**両方**が妥当なときだけ計算（それ以外は `null`）
+- 「通常価格」と断定せず「参考価格」と表記
+- 価格の確認日時を必ず表示し、24時間以上経過したものには注意書きを添える
+- 価格の確認日時と、記事の更新日時は別のものとして表示
+
+## Amazonへのリンク
+
+- `rel="nofollow sponsored noopener noreferrer"`
+- 押す前に広告リンクと分かる補足文を表示
+- 記事本文中のAmazonリンクには［広告］を表示
+- 許可ホスト（amazon.co.jp / amzn.to）以外のURLは商品として扱わない（Open Redirect対策）
+
+## ディレクトリ
+
+```
+app/(public)/       公開ページ（Route Group名はURLに出ません）
+components/
+  layout/           ヘッダー・フッター・モバイルメニュー・モーション
+  editorial/        編集面（ヒーロー・特集・ブランド索引・カテゴリー）
+  products/         商品カード・価格表示・Amazonリンク・開示表示
+  articles/         記事本文レンダラー
+  ui/               汎用部品
+lib/                データ取得・整形・サイト定数・計測
+data/mock/          サンプルデータ
+types/              ドメイン型
+tests/              Vitest
+content/articles/   記事のMarkdown（原稿）
+scripts/            記事変換・公開前チェック
+```
+
+## Vercelへのデプロイ
+
+`vercel.json` に `framework: nextjs` を指定しているので、追加設定は不要です。
+
+**注意：** このリポジトリは以前、静的サイトジェネレーター構成で `lunabrandhunt.com` に
+デプロイされていました。pushすると自動デプロイが走り、**本番ドメインの内容が
+サンプルデータのサイトに置き換わります。** 公開タイミングは意図して選んでください。
+
+## 未確定事項
+
+`npm run check:placeholders` で検出できます。公開前に置き換えてください。
+
+| 項目                                    | 場所                                  |
+| --------------------------------------- | ------------------------------------- |
+| 運営者名                                | `lib/site.ts`                         |
+| お問い合わせ方法                        | `lib/site.ts` / `/contact`            |
+| プライバシーポリシー責任者              | `lib/site.ts`                         |
+| Amazonアソシエイト指定表示              | `lib/site.ts` / `/advertising-policy` |
+| SNS URL                                 | `lib/site.ts`                         |
+| ブランド名とドメイン・Xアカウントの統一 | `lib/site.ts`                         |
+| アクセス解析サービス                    | `lib/analytics.ts`                    |
+
+### ブランド名の不一致について
+
+現在、識別子が揃っていません。公開前に方針を決めてください。
+
+|          | 現状                                         |
+| -------- | -------------------------------------------- |
+| サイト名 | THE BRAND EDIT / ブランド編集ノート          |
+| ドメイン | lunabrandhunt.com                            |
+| X        | @luna_brandhunt（🌙 ルナ｜ブランドハンター） |
+
+## 法務確認が必要な項目
+
+- **Amazonアソシエイトの指定表示文言**：公開時点の規約を確認し、承認された文言に差し替えること。
+  現在の文言は一般的な表現であり、「規約準拠済み」とは確認できていません。
+- **Amazonの商標・ロゴ・商品画像・APIデータの利用範囲**：適用される規約と利用許諾の範囲で使用すること。
+- **Product構造化データ**：当サイトは販売者ではないため、誤解を生む構造化データは実装していません。
+  採用する場合は公式仕様を確認してください。
+- **Cookie・アクセス解析の同意設計**：解析サービス導入時にプライバシーポリシーと合わせて確認すること。
+
+## 公開前チェック
+
+```bash
+npm run check:placeholders
+npm run lint
+npm run typecheck
+npm run test
+npm run build
+```
+
+加えて、次を目視で確認してください。
+
+- モバイル幅（375〜430px）での表示
+- キーボードのみでの操作（Tab / Esc / Enter）
+- `prefers-reduced-motion: reduce` での表示
+- 画像が読み込めない場合の代替表示
