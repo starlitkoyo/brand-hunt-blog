@@ -1,9 +1,8 @@
 /** サイト全体の定数。未確定事項はプレースホルダーとして残す。 */
 
 export const SITE = {
-  /** 欧文のワードマーク。ドメイン lunabrandhunt.com と一致させる */
-  name: 'LUNA BRAND HUNT',
-  nameJa: 'ルナのブランド巡回ノート',
+  name: 'THE BRAND EDIT',
+  nameJa: 'ブランド編集ノート',
   copy: 'いいものを、いい価格で。',
   description: 'Amazonで見つけるブランドセールと、大人のためのショッピングノート。',
   /** 本番URL。未設定なら canonical を出力しない（架空のURLを出さない） */

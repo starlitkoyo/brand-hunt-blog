@@ -1,8 +1,8 @@
 {
-  "name": "luna-brand-hunt",
+  "name": "the-brand-edit",
   "version": "0.1.0",
   "private": true,
-  "description": "LUNA BRAND HUNT | ルナのブランド巡回ノート — Amazonのブランド商品を編集的に紹介するメディア",
+  "description": "THE BRAND EDIT | ブランド編集ノート — Amazonのブランド商品を編集的に紹介するメディア",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
