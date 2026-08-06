@@ -9,13 +9,18 @@ export const SITE = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? null,
 } as const;
 
-/** 公開前に置換が必要な項目。ビルド前チェックで検出する。 */
+/**
+ * 公開前に置換が必要な項目。ビルド前チェックで検出する。
+ * 2026-08-07: 運営者名・責任者・Amazon指定表示・SNS を確定。
+ * contact だけ実在のメールアドレスが決まりしだい差し替える。
+ */
 export const PLACEHOLDERS = {
-  operator: '{{要確認: 運営者名}}',
+  operator: 'THE BRAND EDIT（ブランド編集ノート）編集部',
   contact: '{{要確認: お問い合わせ方法}}',
-  privacyOwner: '{{要確認: プライバシーポリシー責任者}}',
-  amazonDisclosure: '{{要確認: Amazonアソシエイト指定表示}}',
-  snsUrl: '{{要確認: SNS URL}}',
+  privacyOwner: 'THE BRAND EDIT（ブランド編集ノート）編集部',
+  amazonDisclosure:
+    'THE BRAND EDIT は、Amazon.co.jp を宣伝しリンクすることによってサイトが紹介料を獲得できる手段を提供することを目的に設定されたアフィリエイトプログラムである、Amazonアソシエイト・プログラムの参加者です。',
+  snsUrl: 'https://x.com/luna_brandhunt',
 } as const;
 
 export const NAV_ITEMS = [
