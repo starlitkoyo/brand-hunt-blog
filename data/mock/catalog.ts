@@ -16,7 +16,7 @@ export const MOCK_CATEGORIES: Category[] = [
     nameEn: 'FASHION',
     description:
       'バッグ、財布、靴、アクセサリー。長く使えるかどうかを基準に、素材と仕立てを見て選んでいます。',
-    imageUrl: '/images/mock/cat-fashion.svg',
+    imageUrl: '/images/mock/cat-fashion.webp',
     sortOrder: 1,
     isPublished: true,
   },
@@ -27,7 +27,7 @@ export const MOCK_CATEGORIES: Category[] = [
     nameEn: 'BEAUTY',
     description:
       'コスメ、スキンケア、フレグランス、美容家電。使い続けられる価格かどうかも一緒に考えます。',
-    imageUrl: '/images/mock/cat-beauty.svg',
+    imageUrl: '/images/mock/cat-beauty.webp',
     sortOrder: 2,
     isPublished: true,
   },
@@ -37,7 +37,7 @@ export const MOCK_CATEGORIES: Category[] = [
     name: 'インテリア',
     nameEn: 'HOME',
     description: '照明、収納、テーブルウェア。部屋になじむかどうかを、色と大きさから見ています。',
-    imageUrl: '/images/mock/cat-home.svg',
+    imageUrl: '/images/mock/cat-home.webp',
     sortOrder: 3,
     isPublished: true,
   },
@@ -48,7 +48,7 @@ export const MOCK_CATEGORIES: Category[] = [
     nameEn: 'LIFE TECH',
     description:
       'ドライヤー、ヘアアイロン、キッチン家電。毎日さわるものなので、重さと手入れのしやすさを重視します。',
-    imageUrl: '/images/mock/cat-life-tech.svg',
+    imageUrl: '/images/mock/cat-life-tech.webp',
     sortOrder: 4,
     isPublished: true,
   },
@@ -183,7 +183,7 @@ const SEEDS: MockProductSeed[] = [
     currentPrice: 16500,
     referencePrice: null,
     priority: 6,
-    image: '/images/mock/product-bag-b.svg',
+    image: '/images/mock/product-bag-b.webp',
   },
   {
     slug: 'maison-lueur-leather-key-case',
@@ -196,7 +196,7 @@ const SEEDS: MockProductSeed[] = [
     currentPrice: 6800,
     referencePrice: 8800,
     priority: 4,
-    image: '/images/mock/product-small-a.svg',
+    image: '/images/mock/product-small-a.webp',
   },
 
   // ---------------- BEAUTY ----------------
@@ -225,7 +225,7 @@ const SEEDS: MockProductSeed[] = [
     currentPrice: 3520,
     referencePrice: 4400,
     priority: 5,
-    image: '/images/mock/product-beauty-b.svg',
+    image: '/images/mock/product-beauty-b.webp',
   },
   {
     slug: 'studio-aube-facial-steamer',
@@ -240,7 +240,7 @@ const SEEDS: MockProductSeed[] = [
     priority: 3,
     availabilityStatus: 'unknown',
     confirmedAt: null,
-    image: '/images/mock/product-beauty-c.svg',
+    image: '/images/mock/product-beauty-c.webp',
   },
   {
     slug: 'maison-lueur-fragrance-mist',
@@ -253,7 +253,7 @@ const SEEDS: MockProductSeed[] = [
     currentPrice: 5280,
     referencePrice: 6600,
     priority: 4,
-    image: '/images/mock/product-beauty-d.svg',
+    image: '/images/mock/product-beauty-d.webp',
   },
 
   // ---------------- HOME ----------------
@@ -282,7 +282,7 @@ const SEEDS: MockProductSeed[] = [
     currentPrice: 8800,
     referencePrice: 11000,
     priority: 6,
-    image: '/images/mock/product-home-b.svg',
+    image: '/images/mock/product-home-b.webp',
   },
   {
     slug: 'calma-objects-linen-storage-box',
@@ -295,7 +295,7 @@ const SEEDS: MockProductSeed[] = [
     currentPrice: 4400,
     referencePrice: null,
     priority: 3,
-    image: '/images/mock/product-home-c.svg',
+    image: '/images/mock/product-home-c.webp',
   },
   {
     slug: 'studio-aube-wall-clock',
@@ -307,7 +307,7 @@ const SEEDS: MockProductSeed[] = [
     currentPrice: 6600,
     referencePrice: 8250,
     priority: 4,
-    image: '/images/mock/product-home-d.svg',
+    image: '/images/mock/product-home-d.webp',
   },
 
   // ---------------- LIFE TECH ----------------
@@ -336,7 +336,7 @@ const SEEDS: MockProductSeed[] = [
     currentPrice: 8980,
     referencePrice: 11800,
     priority: 7,
-    image: '/images/mock/product-tech-b.svg',
+    image: '/images/mock/product-tech-b.webp',
   },
   {
     slug: 'studio-aube-electric-kettle',
@@ -349,7 +349,7 @@ const SEEDS: MockProductSeed[] = [
     currentPrice: 9900,
     referencePrice: 12800,
     priority: 6,
-    image: '/images/mock/product-tech-c.svg',
+    image: '/images/mock/product-tech-c.webp',
   },
   {
     slug: 'studio-aube-humidifier',
@@ -363,7 +363,7 @@ const SEEDS: MockProductSeed[] = [
     referencePrice: 14800,
     priority: 5,
     availabilityStatus: 'out_of_stock',
-    image: '/images/mock/product-tech-d.svg',
+    image: '/images/mock/product-tech-d.webp',
   },
 ];
 
