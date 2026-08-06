@@ -9,10 +9,10 @@ export default function SiteFooter() {
       <div className="u-container grid gap-12 py-14 lg:grid-cols-[1.2fr_1fr_1fr] lg:py-16">
         <div>
           <p className="font-[family-name:var(--font-utility)] text-base font-semibold tracking-[0.24em]">
-            THE BRAND EDIT
+            {SITE.name}
           </p>
           <p className="mt-2 font-[family-name:var(--font-display)] text-sm tracking-[0.16em] text-[var(--color-muted)]">
-            ブランド編集ノート
+            {SITE.nameJa}
           </p>
           <p className="mt-6 max-w-sm text-sm leading-relaxed text-[var(--color-muted-strong)]">
             {SITE.description}

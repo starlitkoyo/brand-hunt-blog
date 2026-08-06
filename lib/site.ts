@@ -1,8 +1,9 @@
 /** サイト全体の定数。未確定事項はプレースホルダーとして残す。 */
 
 export const SITE = {
-  name: 'THE BRAND EDIT',
-  nameJa: 'ブランド編集ノート',
+  /** 欧文のワードマーク。ドメイン lunabrandhunt.com と一致させる */
+  name: 'LUNA BRAND HUNT',
+  nameJa: 'ルナのブランド巡回ノート',
   copy: 'いいものを、いい価格で。',
   description: 'Amazonで見つけるブランドセールと、大人のためのショッピングノート。',
   /** 本番URL。未設定なら canonical を出力しない（架空のURLを出さない） */
@@ -16,7 +17,6 @@ export const PLACEHOLDERS = {
   privacyOwner: '{{要確認: プライバシーポリシー責任者}}',
   amazonDisclosure: '{{要確認: Amazonアソシエイト指定表示}}',
   snsUrl: '{{要確認: SNS URL}}',
-  brandAlignment: '{{要確認: ブランド名とドメイン・Xアカウントの統一}}',
 } as const;
 
 export const NAV_ITEMS = [

@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import ImageFallback from '@/components/ui/ImageFallback';
+import { SITE } from '@/lib/site';
 
 type Props = {
   imageUrl: string | null;
@@ -18,7 +19,7 @@ export default function HeroEditorial({ imageUrl, imageAlt }: Props) {
     <section className="u-container pt-8 pb-16 lg:pt-16 lg:pb-24">
       <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
         <div className="order-2 lg:order-1">
-          <p className="u-label">THE BRAND EDIT</p>
+          <p className="u-label">{SITE.name}</p>
 
           <h1 className="mt-5 text-[2rem] leading-[1.4] sm:text-[2.5rem] lg:text-[3.25rem] lg:leading-[1.35]">
             欲しかったものを、

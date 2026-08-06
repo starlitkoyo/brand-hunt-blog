@@ -9,10 +9,10 @@ export default function SiteHeader() {
       <div className="u-container flex items-center justify-between gap-6 py-5 lg:py-6">
         <Link href="/" className="shrink-0 leading-none" aria-label={`${SITE.name} トップページ`}>
           <span className="block font-[family-name:var(--font-utility)] text-[0.95rem] font-semibold tracking-[0.26em] lg:text-[1.05rem]">
-            THE BRAND EDIT
+            {SITE.name}
           </span>
           <span className="mt-1 block font-[family-name:var(--font-display)] text-[0.68rem] tracking-[0.18em] text-[var(--color-muted)]">
-            ブランド編集ノート
+            {SITE.nameJa}
           </span>
         </Link>
 
