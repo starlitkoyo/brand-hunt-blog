@@ -109,13 +109,25 @@ export default async function ProductDetailPage({ params }: { params: Params }) 
           </div>
 
           <div className="mt-8">
-            <AmazonOutboundLink
-              href={product.amazonUrl}
-              asin={product.asin}
-              brand={brand?.name ?? ''}
-              category={category?.name ?? ''}
-              placement="product_detail"
-            />
+            {product.isMock ? (
+              /* サンプル商品は実在しないASINを指すため、外部リンクを出さない。
+                 Amazonのエラーページへ飛ばさないための安全弁。 */
+              <div className="border border-[var(--color-border)] bg-[var(--color-canvas-soft)] px-5 py-4">
+                <p className="u-label">SAMPLE</p>
+                <p className="mt-2 text-sm leading-relaxed text-[var(--color-muted-strong)]">
+                  これは開発用のサンプル商品です。実在する商品ではないため、
+                  Amazonへのリンクは表示していません。
+                </p>
+              </div>
+            ) : (
+              <AmazonOutboundLink
+                href={product.amazonUrl}
+                asin={product.asin}
+                brand={brand?.name ?? ''}
+                category={category?.name ?? ''}
+                placement="product_detail"
+              />
+            )}
           </div>
 
           {product.availabilityStatus === 'out_of_stock' ? (
